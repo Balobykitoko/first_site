@@ -2,49 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel's Flask Site</title>
+    <title>Professional Quiz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f8f9fa; }
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 100px 0;
-            border-radius: 0 0 50% 50% / 10%;
-        }
-    </style>
 </head>
-<body>
-
-    <nav class="navbar navbar-dark bg-dark">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
-            <a class="navbar-brand" href="#">Flask Project</a>
+            <a class="navbar-brand fw-bold" href="#">Smart Quiz</a>
+            <div>
+                {% if current_user.is_authenticated %}
+                    <a href="/admin" class="btn btn-light btn-sm">Admin</a>
+                    <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn btn-outline-light btn-sm">Admin Login</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
 
-    <header class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold">🚀 Welcome to My Site</h1>
-            <p class="lead">Built with Python, Flask, and deployed on Render.</p>
-            <a href="https://github.com/Balobykitoko" class="btn btn-light btn-lg mt-3">View My GitHub</a>
-        </div>
-    </header>
-
-    <main class="container my-5 text-center">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm border-0 p-4">
-                    <h3>About This Site</h3>
-                    <p class="text-muted">This is a live web application being managed via Git. Every time I push code, Render updates this page automatically!</p>
-                </div>
+            <div class="col-md-8 text-center">
+                <h1 class="display-5 mb-4">Ready to test your knowledge?</h1>
+                
+                <form class="text-start">
+                    {% for q in questions %}
+                    <div class="card mb-3 shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title">Question #{{ loop.index }}</h5>
+                            <p class="card-text">{{ q.text }}</p>
+                            <input type="text" class="form-control" placeholder="Type your answer here...">
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">No questions added yet. Admin needs to log in and add some!</div>
+                    {% endfor %}
+                    
+                    {% if questions %}
+                    <button type="button" class="btn btn-primary btn-lg w-100 mt-3" onclick="alert('Great job! This is where the scoring logic would go next.')">Submit Quiz</button>
+                    {% endif %}
+                </form>
             </div>
         </div>
-    </main>
-
-    <footer class="text-center py-4 text-muted">
-        &copy; 2025 Emmanuel - Built with ❤️ and Gemini
-    </footer>
-
+    </div>
 </body>
 </html>
