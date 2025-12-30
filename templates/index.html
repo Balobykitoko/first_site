@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Flask Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel's Flask Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            border-radius: 0 0 50% 50% / 10%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to my Flask site!</h1>
-    <p>This is running online!</p>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Flask Project</a>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">🚀 Welcome to My Site</h1>
+            <p class="lead">Built with Python, Flask, and deployed on Render.</p>
+            <a href="https://github.com/Balobykitoko" class="btn btn-light btn-lg mt-3">View My GitHub</a>
+        </div>
+    </header>
+
+    <main class="container my-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 p-4">
+                    <h3>About This Site</h3>
+                    <p class="text-muted">This is a live web application being managed via Git. Every time I push code, Render updates this page automatically!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-muted">
+        &copy; 2025 Emmanuel - Built with ❤️ and Gemini
+    </footer>
+
 </body>
 </html>
