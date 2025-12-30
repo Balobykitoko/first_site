@@ -9,26 +9,48 @@
     <nav class="navbar navbar-dark bg-dark mb-4">
         <div class="container">
             <span class="navbar-brand">Admin Dashboard</span>
-            <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+            <a href="/" class="btn btn-outline-light btn-sm">View Site</a>
         </div>
     </nav>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card p-4 shadow-sm border-0">
-                    <h4>Add a New Question</h4>
-                    <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm border-0 mb-4">
+                    <h4>Add Question</h4>
                     <form method="POST">
                         <div class="mb-3">
-                            <label>Question Text</label>
-                            <input type="text" name="text" class="form-control" placeholder="Ex: What is 2 + 2?" required>
+                            <label class="form-label">Question</label>
+                            <input type="text" name="text" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label>Correct Answer</label>
-                            <input type="text" name="answer" class="form-control" placeholder="Ex: 4" required>
+                            <label class="form-label">Answer</label>
+                            <input type="text" name="answer" class="form-control" required>
                         </div>
-                        <button class="btn btn-success w-100">Add to Database</button>
+                        <button class="btn btn-success w-100">Save Question</button>
                     </form>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card p-4 shadow-sm border-0">
+                    <h4>Current Questions</h4>
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for q in questions %}
+                            <tr>
+                                <td>{{ q.id }}</td>
+                                <td>{{ q.text }}</td>
+                                <td><span class="badge bg-info text-dark">{{ q.correct_answer }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
